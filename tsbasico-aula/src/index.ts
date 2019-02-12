@@ -1,6 +1,5 @@
-export class OlaMundo{
-    public run(){
-        console.log("Olá mundo em ingles!");
-    }
-}
-new OlaMundo().run();
+import {OlaMundo} from './olamundo';
+import {Perguntas} from './questions';
+
+new Perguntas().makeAQuestion();
+//new OlaMundo().run();
