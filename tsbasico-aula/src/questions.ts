@@ -20,7 +20,7 @@ private dadosDaEntrega : any;
                     name: 'tamanho',
                     type: 'list',
                     message: 'Qual o tamanho da pizza?',
-                    choices: ['1.Pequena', '2.Média', '3.Grande'],
+                    choices: ['Pequena', 'Média', 'Grande'],
                     
                 },
                 {
@@ -92,9 +92,10 @@ private dadosDaEntrega : any;
         );
     }
     public report(){
-        console.log(JSON.stringify(this.dadosDoPedido));
-        console.log(this.dadosDoPedido.nome + ' ' + this.dadosDoPedido.telefone);
-        //console.log(`Relatório\n${this.dadosDoPedido}`);
+        console.log('\n\nDados do cliente \nCliente: ' + this.dadosDoPedido.nome + '\nTelefone: ' + this.dadosDoPedido.telefone + '\n\nDados da Pizza \nTamanho:' + this.dadosDoPedido.tamanho + '\nSabor: ' + this.dadosDoPedido.sabor + '\nQuantidade: ' + this.dadosDoPedido.quantidade);
+        if(this.dadosDoPedido.entrega == 'Sim'){
+            console.log('\nDados da Entrega \nCidade: ' + this.dadosDaEntrega.cidade + '\nBairro: ' + this.dadosDaEntrega.bairro  + '\nRua: ' + this.dadosDaEntrega.rua + '\nNúmero: ' + this.dadosDaEntrega.numero + '\nComplemento:' + this.dadosDaEntrega.complemento);
+        }
     }
     
 }
