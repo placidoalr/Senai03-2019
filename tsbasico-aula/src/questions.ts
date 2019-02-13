@@ -1,9 +1,17 @@
+import { VpHttp } from './http/vphttp';
 import {prompt} from 'inquirer';
 
 export class Perguntas{
 private dadosDoPedido : any;
 private dadosDaEntrega : any;
-    public makeAQuestion(){
+private dataPizza : any[] = [];
+
+    public question(){
+        this.getSabores();
+        this.makeAQuestion();
+    }
+
+    private makeAQuestion(){
         prompt(
             [
                 {
@@ -27,7 +35,7 @@ private dadosDaEntrega : any;
                     name: 'sabor',
                     type: 'list',
                     message: 'Qual o sabor da pizza?',
-                    choices: ['Mussarela','Calabresa','Margherita','Basca','Mafiosa','Cappuccino']
+                    choices: this.dataPizza
                 },
                 {
                     name: 'quantidade',
@@ -54,7 +62,7 @@ private dadosDaEntrega : any;
             }
         );
     }
-    public makeEntrega(){
+    private makeEntrega(){
         prompt
         (
             [
@@ -91,11 +99,29 @@ private dadosDaEntrega : any;
             }
         );
     }
-    public report(){
-        console.log('\n\nDados do cliente \nCliente: ' + this.dadosDoPedido.nome + '\nTelefone: ' + this.dadosDoPedido.telefone + '\n\nDados da Pizza \nTamanho:' + this.dadosDoPedido.tamanho + '\nSabor: ' + this.dadosDoPedido.sabor + '\nQuantidade: ' + this.dadosDoPedido.quantidade);
+    private report(){
+        console.log('\n\nDados do cliente \nCliente: ' + this.dadosDoPedido.nome + '\nTelefone: ' + this.dadosDoPedido.telefone + '\n\nDados da Pizza \nTamanho:' + this.dadosDoPedido.tamanho + '\nSabor: ' + this.dadosDoPedido.sabor + '\nQuantidade: ' + this.dadosDoPedido.quantidade + '\nEntregar: ' + this.dadosDoPedido.entrega);
         if(this.dadosDoPedido.entrega == 'Sim'){
             console.log('\nDados da Entrega \nCidade: ' + this.dadosDaEntrega.cidade + '\nBairro: ' + this.dadosDaEntrega.bairro  + '\nRua: ' + this.dadosDaEntrega.rua + '\nNúmero: ' + this.dadosDaEntrega.numero + '\nComplemento:' + this.dadosDaEntrega.complemento);
         }
+    }
+    private getSabores(){
+        let http = new VpHttp('http://5c649d5bc969210014a32ec7.mockapi.io/sabor');
+
+        http.get().subscribe(
+            (data : any) => {
+                data.forEach((element:any) => {
+                    if(element.Disponivel == true){
+                        this.dataPizza.push(element);
+                    }
+                    
+                });
+                
+            },
+            (error : any) => {
+                console.log(error); 
+            }
+        )
     }
     
 }
