@@ -112,7 +112,7 @@ private dataPizza : any[] = [];
             (data : any) => {
                 data.forEach((element:any) => {
                     if(element.Disponivel == true){
-                        this.dataPizza.push(element);
+                        this.dataPizza.push(element.sabor);
                     }
                     
                 });
