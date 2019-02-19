@@ -31,7 +31,7 @@ private dadoSaldo: any
         );
     }
     private report(){
-        console.log('\n\nCategoria:'+this.dadosCategoria.categoria);
+        console.log('\nCategoria:'+this.dadosCategoria.categoria);
 
         this.dataProduto.forEach((element:any) => {
 
@@ -55,7 +55,7 @@ private dadoSaldo: any
                 this.getProduto();
             },
             (error : any) => {
-                console.log(error); 
+                console.log("Não foi possível buscar dados na inicialização do programa"); 
             }
         )
     }
@@ -70,7 +70,7 @@ private dadoSaldo: any
                 this.run1();
             },
             (error : any) => {
-                console.log(error); 
+                console.log("Não foi possível buscar dados na inicialização do programa"); 
             }
         )
    };
