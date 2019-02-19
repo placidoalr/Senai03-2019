@@ -4,14 +4,19 @@ import {prompt} from 'inquirer';
 export class Perguntas{
 private dadosDoPedido : any;
 private dadosDaEntrega : any;
+private dadosDaFimEntrega : any;
+private dataTamanho : any[] = [];
 private dataPizza : any[] = [];
+private dataCidade : any[] = [];
+private dataBairro : any[] = [];
 
     public question(){
-        this.getSabores();
-        this.makeAQuestion();
+        this.getTamanho();
+        
     }
 
     private makeAQuestion(){
+        console.log(this.dataPizza)
         prompt(
             [
                 {
@@ -28,8 +33,7 @@ private dataPizza : any[] = [];
                     name: 'tamanho',
                     type: 'list',
                     message: 'Qual o tamanho da pizza?',
-                    choices: ['Pequena', 'Média', 'Grande'],
-                    
+                    choices: this.dataTamanho
                 },
                 {
                     name: 'sabor',
@@ -68,13 +72,27 @@ private dataPizza : any[] = [];
             [
                 {
                     name: 'cidade',
-                    type: 'input',
+                    type: 'list',
                     message: 'Qual a Cidade do seu endereço?\n',
-                },
+                    choices: this.dataCidade
+                }
+            ]
+        ).then(
+            (answers : any) =>{
+                this.dadosDaEntrega = answers;
+                this.getBairros();
+            }
+        );
+    }
+    private makeFimEntrega(){
+        prompt
+        (
+        [
                 {
                     name: 'bairro',
-                    type: 'input',
+                    type: 'list',
                     message: 'Qual o Bairro do seu endereço?\n',
+                    choices: this.dataBairro
                 },
                 {
                     name: 'rua',
@@ -90,11 +108,11 @@ private dataPizza : any[] = [];
                     name: 'complemento',
                     type: 'input',
                     message: 'Complemento?\n',
-                },
+                }
             ]
         ).then(
             (answers : any) =>{
-                this.dadosDaEntrega = answers;
+                this.dadosDaFimEntrega = answers;
                 this.report();
             }
         );
@@ -102,7 +120,7 @@ private dataPizza : any[] = [];
     private report(){
         console.log('\n\nDados do cliente \nCliente: ' + this.dadosDoPedido.nome + '\nTelefone: ' + this.dadosDoPedido.telefone + '\n\nDados da Pizza \nTamanho:' + this.dadosDoPedido.tamanho + '\nSabor: ' + this.dadosDoPedido.sabor + '\nQuantidade: ' + this.dadosDoPedido.quantidade + '\nEntregar: ' + this.dadosDoPedido.entrega);
         if(this.dadosDoPedido.entrega == 'Sim'){
-            console.log('\nDados da Entrega \nCidade: ' + this.dadosDaEntrega.cidade + '\nBairro: ' + this.dadosDaEntrega.bairro  + '\nRua: ' + this.dadosDaEntrega.rua + '\nNúmero: ' + this.dadosDaEntrega.numero + '\nComplemento:' + this.dadosDaEntrega.complemento);
+            console.log('\nDados da Entrega \nCidade: ' + this.dadosDaEntrega.cidade + '\nBairro: ' + this.dadosDaFimEntrega.bairro  + '\nRua: ' + this.dadosDaFimEntrega.rua + '\nNúmero: ' + this.dadosDaFimEntrega.numero + '\nComplemento:' + this.dadosDaFimEntrega.complemento);
         }
     }
     private getSabores(){
@@ -112,16 +130,64 @@ private dataPizza : any[] = [];
             (data : any) => {
                 data.forEach((element:any) => {
                     if(element.Disponivel == true){
-                        this.dataPizza.push(element.sabor);
+                        this.dataPizza.push(element.Sabor);
                     }
                     
                 });
-                
+                this.getCidades();
             },
             (error : any) => {
                 console.log(error); 
             }
         )
     }
-    
+    private getTamanho(){
+        let http = new VpHttp('http://5c649d5bc969210014a32ec7.mockapi.io/tamanho');
+
+        http.get().subscribe(
+            (data : any) => {
+                data.forEach((element:any) => {
+                        this.dataTamanho.push(element.Nome);
+                
+                });
+                this.getSabores();
+            },
+            (error : any) => {
+                console.log(error); 
+            }
+        )
+    }
+    private getCidades(){
+        let http = new VpHttp('http://5c649d5bc969210014a32ec7.mockapi.io/cidade');
+
+        http.get().subscribe(
+            (data : any) => {
+                data.forEach((element:any) => {
+                        this.dataCidade.push(element.Cidade);
+                });
+                this.makeAQuestion();
+            },
+            (error : any) => {
+                console.log(error); 
+            }
+        )
+    }
+    private getBairros(){
+        let http = new VpHttp('http://5c649d5bc969210014a32ec7.mockapi.io/bairro');
+
+        http.get().subscribe(
+            (data : any) => {
+                data.forEach((element:any) => {
+                    if(element.Cidade == this.dadosDaEntrega.cidade){
+                        this.dataBairro.push(element.Nome);
+                    }
+                }
+            );
+                this.makeFimEntrega();
+            },
+            (error : any) => {
+                console.log(error); 
+            }
+        )
+   };
 }
