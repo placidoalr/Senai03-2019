@@ -16,7 +16,6 @@ private dataBairro : any[] = [];
     }
 
     private makeAQuestion(){
-        console.log(this.dataPizza)
         prompt(
             [
                 {
