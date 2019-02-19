@@ -4,8 +4,7 @@
   "description": "",
   "main": "./dist/index.js",
   "scripts": {
-    "start": "tsc && node ./dist/index.js",
-    "installts": "install -g typescript"
+    "start": "tsc && node ./dist/index.js"
   },
   "author": "Placido",
   "license": "ISC",
