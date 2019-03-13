@@ -23,7 +23,7 @@ export class HomePage {
 
   }
   public showToast(){
-    this.toast.presentToast();
+    this.toast.presentToast("Gay");
   }
 
   public limparAlunos(){
