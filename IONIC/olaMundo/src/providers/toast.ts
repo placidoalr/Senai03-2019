@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
-import { ToastController, Toast } from 'ionic-angular';
+import { ToastController } from 'ionic-angular';
 
 @Injectable()
 export class Toasted{
   constructor(private toastCtrl : ToastController){
   }
 
-  presentToast() {
+  presentToast(mensagem : string ) {
     const toast = this.toastCtrl.create({
-      message: 'dorgas',
+      message: mensagem,
       duration: 3000,
       position: 'top'
     });
