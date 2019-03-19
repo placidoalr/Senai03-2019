@@ -18,7 +18,7 @@ export class HttpProvider {
   private TIMEOUT : number = 15000;
 
   constructor(private http: Http) {
-    this.url = 'http://104.196.102.231/logon';
+    this.url = null;
     this.token = null;
   }
   private prepareHeaders(contentType : boolean){
