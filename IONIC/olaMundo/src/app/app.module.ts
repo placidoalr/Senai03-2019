@@ -1,3 +1,4 @@
+
 import { HttpProvider } from './../providers/http';
 import { LoginProvider } from './../providers/login';
 import { HttpModule } from '@angular/http';
@@ -10,6 +11,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { LoginPage } from './../pages/login/login';
+import { TamanhosPage } from './../pages/tamanhos/tamanhos';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -21,7 +23,8 @@ import {Toasted} from '../providers/toast';
     MyApp,
     HomePage,
     ListPage,
-    LoginPage
+    LoginPage,
+    TamanhosPage
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,8 @@ import {Toasted} from '../providers/toast';
     MyApp,
     HomePage,
     ListPage,
-    LoginPage
+    LoginPage,
+    TamanhosPage
   ],
   providers: [
     StatusBar,

@@ -1,4 +1,4 @@
-import { HomePage } from './../home/home';
+import { TamanhosPage } from './../tamanhos/tamanhos';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Toasted } from '../../providers/toast';
@@ -23,7 +23,7 @@ export class LoginPage {
   login(){
     this.logon.singIn(this.user, this.senha).subscribe(
       (data : any) => {
-        this.navCtrl.setRoot(HomePage);
+        this.navCtrl.setRoot(TamanhosPage);
       },
       (error : any) => {
         this.toast.presentToast("Login ou senha incorretos!");
