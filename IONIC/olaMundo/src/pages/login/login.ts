@@ -1,15 +1,8 @@
 import { HomePage } from './../home/home';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {Toasted} from '../../providers/toast';
-
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
+import { Toasted } from '../../providers/toast';
+import { LoginProvider } from '../../providers/login';
 @IonicPage()
 @Component({
   selector: 'page-login',
@@ -20,7 +13,7 @@ export class LoginPage {
   user:string;
   senha:string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private toast : Toasted) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private toast : Toasted, private logon : LoginProvider) {
   }
 
   ionViewDidLoad() {
@@ -28,10 +21,14 @@ export class LoginPage {
   }
 
   login(){
-    if(this.user === "igorgay" && this.senha === "verdade"){
-      this.navCtrl.setRoot(HomePage);
-    }else{
-      this.toast.presentToast("Login ou senha incorretos");
-    }
-  }
+    this.logon.singIn(this.user, this.senha).subscribe(
+      (data : any) => {
+        this.navCtrl.setRoot(HomePage);
+      },
+      (error : any) => {
+        this.toast.presentToast("Login ou senha incorretos!");
+        console.log(error);
+      }
+    )
+  };
 }
