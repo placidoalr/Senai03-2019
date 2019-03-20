@@ -1,3 +1,4 @@
+import { TamanhosProvider } from './../providers/tamanhos';
 
 import { HttpProvider } from './../providers/http';
 import { LoginProvider } from './../providers/login';
@@ -46,6 +47,7 @@ import {Toasted} from '../providers/toast';
     Toasted,
     LoginProvider,
     HttpProvider,
+    TamanhosProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

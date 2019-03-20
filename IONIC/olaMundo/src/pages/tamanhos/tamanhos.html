@@ -14,5 +14,13 @@
 
 
 <ion-content padding>
-
+  <ion-list>
+    <ion-item>
+      <ion-label>Tamanhos</ion-label>
+      <ion-select [(ngModel)]="tamanho">
+          <ion-option *ngFor="let tam of listaTamanhos">{{tam.name}}</ion-option>
+        
+      </ion-select>
+    </ion-item>
+  </ion-list>
 </ion-content>
