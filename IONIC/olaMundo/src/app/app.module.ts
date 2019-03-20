@@ -1,3 +1,4 @@
+import { SaboresProvider } from './../providers/sabores';
 import { TamanhosProvider } from './../providers/tamanhos';
 
 import { HttpProvider } from './../providers/http';
@@ -48,6 +49,7 @@ import {Toasted} from '../providers/toast';
     LoginProvider,
     HttpProvider,
     TamanhosProvider,
+    SaboresProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
