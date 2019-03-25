@@ -17,7 +17,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class TamanhosPage {
   public listaTamanhos = [];
-  public idTam = "";
+  public idTam : any;
   public listaSabores = [];
   constructor(public navCtrl: NavController, public navParams: NavParams, private tamanhos : TamanhosProvider,private sabores : SaboresProvider) {
   }
@@ -31,15 +31,21 @@ export class TamanhosPage {
         console.log(error);
       }
     )
-    this.sabores.sabores('1').subscribe(
-      (data : any) => {
-        this.listaSabores = data;
-  
-      },
-      (error : any) => {
-        console.log(error);
-      }
-  
-    )
+  }
+  onChange(){
+    this.sabores.sabores(this.idTam).subscribe(
+    (data : any) => {
+      this.listaSabores = data;
+
+    },
+    (error : any) => {
+      console.log(error);
+    }
+
+  )
+  }
+
+  public getSabores(id : string){
+
   }
 }

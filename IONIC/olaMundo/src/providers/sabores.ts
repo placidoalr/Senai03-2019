@@ -13,7 +13,6 @@ export class SaboresProvider {
   constructor( public httpProvider : HttpProvider) {
   }
   public sabores(idTam : string){
-    
     this.httpProvider.url = 'http://104.196.102.231/sabores/'+idTam;
     return this.httpProvider.get();
   }
