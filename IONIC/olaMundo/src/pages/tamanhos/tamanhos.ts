@@ -2,6 +2,7 @@ import { SaboresProvider } from './../../providers/sabores';
 import { TamanhosProvider } from './../../providers/tamanhos';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { EnderecoPage } from '../endereco/endereco';
 
 /**
  * Generated class for the TamanhosPage page.
@@ -44,8 +45,7 @@ export class TamanhosPage {
 
   )
   }
-
-  public getSabores(id : string){
-
+  dadosEntrega(){
+    this.navCtrl.push(EnderecoPage);
   }
 }

@@ -19,6 +19,9 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {Messages} from '../providers/messages';
 import {Toasted} from '../providers/toast';
+import { EnderecoPage } from '../pages/endereco/endereco';
+import { CidadesProvider } from '../providers/cidades';
+import { BairrosProvider } from '../providers/bairros';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,8 @@ import {Toasted} from '../providers/toast';
     HomePage,
     ListPage,
     LoginPage,
-    TamanhosPage
+    TamanhosPage,
+    EnderecoPage
   ],
   imports: [
     BrowserModule,
@@ -39,7 +43,8 @@ import {Toasted} from '../providers/toast';
     HomePage,
     ListPage,
     LoginPage,
-    TamanhosPage
+    TamanhosPage,
+    EnderecoPage
   ],
   providers: [
     StatusBar,
@@ -50,6 +55,8 @@ import {Toasted} from '../providers/toast';
     HttpProvider,
     TamanhosProvider,
     SaboresProvider,
+    CidadesProvider,
+    BairrosProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
