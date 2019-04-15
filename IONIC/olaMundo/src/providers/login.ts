@@ -1,12 +1,6 @@
-import { Injectable } from '@angular/core';
 import { HttpProvider } from './http';
+import { Injectable } from '@angular/core';
 
-
-/*
-  Generated class for the LoginProvider provider.
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class LoginProvider {
 
@@ -18,7 +12,7 @@ export class LoginProvider {
       userName : userName,
       password : password,
     };
-    this.httpProvider.url = 'http://104.196.102.231/logon';
+    this.httpProvider.url = 'http://localhost:3000/logon';
     return this.httpProvider.post(obj);
     
   }

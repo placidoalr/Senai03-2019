@@ -13,7 +13,7 @@ export class CidadesProvider {
   constructor( public httpProvider : HttpProvider) {
   }
   public cidades(){
-    this.httpProvider.url = 'http://104.196.102.231/cidades';
+    this.httpProvider.url = 'http://localhost:3000/cidades';
     return this.httpProvider.get();
   }
 }
