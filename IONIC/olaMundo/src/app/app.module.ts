@@ -3,6 +3,7 @@ import { TamanhosProvider } from './../providers/tamanhos';
 
 import { HttpProvider } from './../providers/http';
 import { LoginProvider } from './../providers/login';
+import { AddUserProvider } from './../providers/addUser';
 import { HttpModule } from '@angular/http';
 
 import { BrowserModule } from '@angular/platform-browser';
@@ -22,6 +23,7 @@ import {Toasted} from '../providers/toast';
 import { EnderecoPage } from '../pages/endereco/endereco';
 import { CidadesProvider } from '../providers/cidades';
 import { BairrosProvider } from '../providers/bairros';
+import { AddUserPage } from '../pages/addUser/addUser';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { BairrosProvider } from '../providers/bairros';
     ListPage,
     LoginPage,
     TamanhosPage,
-    EnderecoPage
+    EnderecoPage,
+    AddUserPage
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,8 @@ import { BairrosProvider } from '../providers/bairros';
     ListPage,
     LoginPage,
     TamanhosPage,
-    EnderecoPage
+    EnderecoPage,
+    AddUserPage
   ],
   providers: [
     StatusBar,
@@ -57,6 +61,7 @@ import { BairrosProvider } from '../providers/bairros';
     SaboresProvider,
     CidadesProvider,
     BairrosProvider,
+    AddUserProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

@@ -7,6 +7,7 @@ import { HomePage } from './../pages/home/home';
 import { ListPage } from './../pages/list/list';
 import { LoginPage } from './../pages/login/login';
 import { EnderecoPage } from '../pages/endereco/endereco';
+import { AddUserPage } from '../pages/addUser/addUser';
 
 @Component({
   templateUrl: 'app.html'
@@ -26,7 +27,8 @@ export class MyApp {z
       { title: 'Home', component: HomePage },
       { title: 'List', component: ListPage },
       { title: 'Login', component: LoginPage},
-      { title: 'Endereco', component: EnderecoPage}
+      { title: 'Endereco', component: EnderecoPage},
+      { title: 'AddUser', component: AddUserPage}
     ];
   }
 
