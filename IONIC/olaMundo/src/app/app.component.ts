@@ -8,6 +8,7 @@ import { ListPage } from './../pages/list/list';
 import { LoginPage } from './../pages/login/login';
 import { EnderecoPage } from '../pages/endereco/endereco';
 import { AddUserPage } from '../pages/addUser/addUser';
+import { AddSaborPage } from '../pages/add-sabor/add-sabor';
 
 @Component({
   templateUrl: 'app.html'
@@ -28,7 +29,8 @@ export class MyApp {z
       { title: 'List', component: ListPage },
       { title: 'Login', component: LoginPage},
       { title: 'Endereco', component: EnderecoPage},
-      { title: 'AddUser', component: AddUserPage}
+      { title: 'AddUser', component: AddUserPage},
+      { title: 'AddSabor', component: AddSaborPage}
     ];
   }
 

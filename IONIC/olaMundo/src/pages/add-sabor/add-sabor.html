@@ -1,0 +1,41 @@
+
+<ion-header>
+
+  <ion-navbar>
+
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    <ion-title>addSabor</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-list>
+        <ion-item>
+          <ion-label>Tamanhos</ion-label>
+          <ion-select [(ngModel)]="idTam">
+              <ion-option *ngFor="let tam of listaTamanhos" value={{tam.id}}>{{tam.name}}</ion-option>
+
+          </ion-select>
+        </ion-item>
+      </ion-list>
+
+  <ion-list>
+  <ion-item>
+    <ion-label floating>Sabor</ion-label>
+    <ion-input type="text" [(ngModel)]="sabor"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Preço</ion-label>
+    <ion-input type="text" [(ngModel)]="preco"></ion-input>
+  </ion-item>
+
+</ion-list>
+<div padding>
+<button ion-button color="secondary" (click)="insert()">Registrar</button>
+</div>
+</ion-content>

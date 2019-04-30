@@ -4,6 +4,7 @@ import { TamanhosProvider } from './../providers/tamanhos';
 import { HttpProvider } from './../providers/http';
 import { LoginProvider } from './../providers/login';
 import { AddUserProvider } from './../providers/addUser';
+import { AddSaborProvider } from './../providers/add-sabor';
 import { HttpModule } from '@angular/http';
 
 import { BrowserModule } from '@angular/platform-browser';
@@ -24,6 +25,7 @@ import { EnderecoPage } from '../pages/endereco/endereco';
 import { CidadesProvider } from '../providers/cidades';
 import { BairrosProvider } from '../providers/bairros';
 import { AddUserPage } from '../pages/addUser/addUser';
+import { AddSaborPage } from '../pages/add-sabor/add-sabor';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { AddUserPage } from '../pages/addUser/addUser';
     LoginPage,
     TamanhosPage,
     EnderecoPage,
-    AddUserPage
+    AddUserPage,
+    AddSaborPage
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,8 @@ import { AddUserPage } from '../pages/addUser/addUser';
     LoginPage,
     TamanhosPage,
     EnderecoPage,
-    AddUserPage
+    AddUserPage,
+    AddSaborPage
   ],
   providers: [
     StatusBar,
@@ -62,7 +66,8 @@ import { AddUserPage } from '../pages/addUser/addUser';
     CidadesProvider,
     BairrosProvider,
     AddUserProvider,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AddSaborProvider
   ]
 })
 export class AppModule {}

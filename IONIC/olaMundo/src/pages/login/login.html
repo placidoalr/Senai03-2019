@@ -7,23 +7,26 @@
 <ion-header>
 
   <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
     <ion-title>login</ion-title>
   </ion-navbar>
 
 </ion-header>
 <ion-content>
 <ion-list>
-  
+
     <ion-item>
       <ion-label floating>Username</ion-label>
       <ion-input type="text" [(ngModel)]="user"></ion-input>
     </ion-item>
-  
+
     <ion-item>
       <ion-label floating>Password</ion-label>
       <ion-input type="password" [(ngModel)]="senha"></ion-input>
     </ion-item>
-  
+
   </ion-list>
   <div padding>
   <button ion-button color="secondary" (click)="login()">Login</button>
